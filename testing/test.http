@@ -1,0 +1,63 @@
+@baseUrl = https://yoonabsen-production.up.railway.app
+@adminToken = {{ADMIN_TOKEN}}
+@employeeToken = {{EMPLOYEE_TOKEN}}
+
+### Register Admin User
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "adminUser",
+  "password": "adminPass",
+  "role": "admin"
+}
+
+### Register Employee User
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "employeeUser",
+  "password": "employeePass",
+  "role": "karyawan"
+}
+
+### Login as Admin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "adminUser",
+  "password": "adminPass"
+}
+
+### Login as Employee
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "employeeUser",
+  "password": "employeePass"
+}
+
+### Check-In
+POST {{baseUrl}}/attendance/checkin
+Authorization: Bearer {{employeeToken}}
+Content-Type: application/json
+
+### Check-Out
+POST {{baseUrl}}/attendance/checkout
+Authorization: Bearer {{employeeToken}}
+Content-Type: application/json
+
+### View Attendance History
+GET {{baseUrl}}/attendance/history
+Authorization: Bearer {{employeeToken}}
+
+### Get All Employees
+GET {{baseUrl}}/admin/employees
+Authorization: Bearer {{adminToken}}
+
+### Recap Attendance
+GET {{baseUrl}}/admin/attendance
+Authorization: Bearer {{adminToken}}
